@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+</head>
+<style>
+	body {
+		width: 340px;
+		margin: 0 !important;
+		font-family: Verdana;
+	}
+	
+	div {
+		padding: 15px;
+		font-size: 11px;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	}
+	
+	.filtteritiedot {
+		width: 100%;
+		background-color: #111111;
+		color: #dddddd;
+		padding: 10px;
+	}
+	
+	#logo {
+		float: right;
+		margin-right: 20px;
+		overflow: hidden !important;
+	}
+	
+	.asetukset {
+		font-family:Trebuchet MS;
+		font-size: 12px;
+	}
+	
+	.otsikko {
+		font-weight: bold;
+		text-transform: uppercase;
+	}
+	
+	button {
+		float: right;
+		margin-bottom: 15px;
+	}
+
+	.nappi {
+		-moz-box-shadow:inset 0px 1px 0px 0px #f5978e;
+		-webkit-box-shadow:inset 0px 1px 0px 0px #f5978e;
+		box-shadow:inset 0px 1px 0px 0px #f5978e;
+		background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #f24537), color-stop(1, #c62d1f) );
+		background:-moz-linear-gradient( center top, #f24537 5%, #c62d1f 100% );
+		filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f24537', endColorstr='#c62d1f');
+		background-color:#f24537;
+		-webkit-border-top-left-radius:5px;
+		-moz-border-radius-topleft:5px;
+		border-top-left-radius:5px;
+		-webkit-border-top-right-radius:5px;
+		-moz-border-radius-topright:5px;
+		border-top-right-radius:5px;
+		-webkit-border-bottom-right-radius:5px;
+		-moz-border-radius-bottomright:5px;
+		border-bottom-right-radius:5px;
+		-webkit-border-bottom-left-radius:5px;
+		-moz-border-radius-bottomleft:5px;
+		border-bottom-left-radius:5px;
+		text-indent:0px;
+		border:1px solid #d02718;
+		display:inline-block;
+		color:#ffffff;
+		font-family:Trebuchet MS;
+		font-size:14px;
+		font-weight:bold;
+		font-style:normal;
+		height:37px;
+		line-height:37px;
+		width:131px;
+		text-decoration:none;
+		text-align:center;
+		text-shadow:1px 1px 15px #810e05;
+	}
+	.nappi:hover {
+		background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #c62d1f), color-stop(1, #f24537) );
+		background:-moz-linear-gradient( center top, #c62d1f 5%, #f24537 100% );
+		filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#c62d1f', endColorstr='#f24537');
+		background-color:#c62d1f;
+	}.nappi:active {
+		position:relative;
+		top:1px;
+	}
+	
+	*:focus {
+    	outline: none;
+	}	
+	
+	#paivitetty_date {
+		color: white;
+	}
+	
+	p {
+		padding: 10px;
+		border-radius: 3px;
+		border: 1px solid #333333;
+		background-color: #333333;
+		
+		color: white;
+		
+		opacity: .70; /* Standard: FF gt 1.5, Opera, Safari, CSS3 */
+		filter: alpha(opacity=70); /* IE lt 8 */
+		-ms-filter: "alpha(opacity=70)"; /* IE 8 */
+		-khtml-opacity: .70; /* Safari 1.x */
+		-moz-opacity: .70; /* FF lt 1.5, Netscape */
+	}
+	
+	p span {
+		font-family:Trebuchet MS;
+		font-size: 12px;		
+	}
+	
+	.filtteriotsikko {
+		display: block;
+		font-weight: bold;
+		padding-bottom: 8px;
+		text-transform: uppercase;
+	}
+	
+	#otsikkoelementit {
+		display: block;
+		width: 100%;
+	}
+	
+	#filtteriosoite {
+		font-size: 9px;
+	}
+</style>
+<body>
+
+	<div class="filtteritiedot">
+		<span class="otsikko">Filtterit päivitetty: </span><span id="paivitetty_date">-</span> <img id="logo" src="icon48.png" />
+	</div>
+	<div class="asetukset">
+		<p style="margin-top: 30px;">
+			<span class="filtteriotsikko">Filtterit ladataan osoitteesta:</span><span id="filtteriosoite"></span>
+		</p>
+		<div style="height: 40px;">
+			<button id="paivita" class="nappi">Päivitä filtterit</button>
+		</div>
+		<input type="checkbox" id="asetus_indikaattori">Indikaattori muokattujen otsikoiden perässä</input><br />
+		<input type="checkbox" id="asetus_tyylitys">Vähemmän hyökkäävät fontit</input><br /><hr />
+		<input type="checkbox" id="asetus_aliarvio" title="(nämäkin olet aina tehnyt väärin...)">Poista lukijaa aliarvioivat uutiset</input><br />
+		<input type="checkbox" id="asetus_neuvova" title="(näin teet... näin voit...)">Poista lukijaa neuvovat uutiset</input><br />
+		<input type="checkbox" id="asetus_persut" title="Ominaisuus lisätty käyttäjän pyynnöstä">Poista perussuomalaisten ininät</input><br />
+		<input type="checkbox" id="asetus_eiherkille">Poista ei herkille -merkinnällä varustetut uutiset</input><br /><hr />
+		<input type="checkbox" id="asetus_kytke"><strong>Ota klikinsäästäjä käyttöön</strong></input><br />
+	</div>
+	
+	<script type="text/javascript" src="jquery.min.js"></script>
+	<script src="popup.js"></script>
+
+</body>
+</html>

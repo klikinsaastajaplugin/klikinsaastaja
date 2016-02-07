@@ -1,0 +1,42 @@
+{
+	"manifest_version": 2,
+
+	"name": "Klikinsäästäjä - ILTASANOMAT",
+	"description": "Tekee Iltasanomat- ja Iltalehti-verkkosivujen uutisista verbaalisesti luettavampia ja vähemmän ärsyttäviä.",
+	"version": "1.3.0",
+	"icons": {
+		"16": "icon16.png",
+		"48": "icon48.png",
+		"128": "icon128.png"
+	},
+	
+	"author": "Ärsyyntynyt",
+
+	"browser_action": {
+		"default_icon": "icon48.png",
+		"default_title": "Puhdistaa uutiset!",
+		"default_popup": "popup.html"
+	},
+    
+	"content_scripts": [{
+		"matches": [
+			"http://www.iltasanomat.fi/*",
+			"http://iltasanomat.fi/*",
+			"http://www.iltalehti.fi/*",
+			"http://iltalehti.fi/*"
+		],
+		"run_at": "document_start",
+		"js": ["jquery.min.js", "popup.js", "klikinsaastaja.js"],
+		"css": ["klikinsaastaja.css"]
+    }],
+    
+	"permissions": [
+		"activeTab",
+		"storage",
+		"tabs"
+	],
+	
+	"background": {
+		"scripts": ["jquery.min.js", "background.js"]
+	}
+}
